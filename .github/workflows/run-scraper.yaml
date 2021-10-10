@@ -1,0 +1,13 @@
+name: Scrape the data!
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  scrape:
+    name: Scrape that data!
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run
+      run: |
+        docker run --rm -e CONNECTION_URL="${{ secrets.CONNECTION_URL }}" ghcr.io/koralowiec/pl-covid-stats-scraper:latest
