@@ -11,10 +11,7 @@ class Database:
     def is_record_already_saved(self, date: str) -> bool:
         found = self.collection.find_one({"date": date})
 
-        if found is None:
-            return False
-
-        return True
+        return bool(found)
 
     def insert_if_not_present(self, data: ScrapedData) -> str:
         is_already_saved = self.is_record_already_saved(data.date)
