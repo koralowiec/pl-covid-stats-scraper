@@ -1,4 +1,7 @@
-class ScrapedData:
+class GeneralData:
+
+    """GeneralData represents general statistics about COVID."""
+
     def __init__(
         self,
         total_recovered: int = -1,
