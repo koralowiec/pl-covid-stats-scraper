@@ -6,7 +6,7 @@ from data.scraped_data import ScrapedData
 class Database:
     def __init__(self, connection_url):
         self.client = pymongo.MongoClient(connection_url)
-        self.db = self.client.test_covid
+        self.db = self.client.covid
         self.collection = self.db.records
 
     def is_record_already_saved(self, date: str) -> bool:
