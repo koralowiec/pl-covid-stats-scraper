@@ -1,10 +1,13 @@
+from typing import List
 from data.general_data import GeneralData
 from data.scraped_data import ScrapedData
+from data.voivodeship_data import VoivodeshipData
 from database import Database
 import os
 import sys
 
 from scraps.general import GeneralScraper
+from scraps.voivodeship import VoivodeshipScraper
 
 
 def main():
@@ -28,12 +31,22 @@ def main():
 
 
 def start_scrapers() -> ScrapedData:
+    print("Starting scrapers...")
+
     general_scraper = GeneralScraper()
     general_scraper.start_scraping()
     general_data: GeneralData = general_scraper.get_results()
     print("General statistics", general_data)
 
-    all_data = ScrapedData(general_data=general_data)
+    voivodeship_scraper = VoivodeshipScraper()
+    voivodeship_scraper.start_scraping()
+    voivodeship_data: List[VoivodeshipData] = voivodeship_scraper.get_results()
+    for v_data in voivodeship_data:
+        print(v_data)
+
+    all_data = ScrapedData(
+        general_data=general_data, voivodeships_data=voivodeship_data
+    )
     return all_data
 
 
