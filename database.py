@@ -1,11 +1,12 @@
 import pymongo
-from scraped_data import ScrapedData
+
+from data.scraped_data import ScrapedData
 
 
 class Database:
     def __init__(self, connection_url):
         self.client = pymongo.MongoClient(connection_url)
-        self.db = self.client.covid
+        self.db = self.client.test_covid
         self.collection = self.db.records
 
     def is_record_already_saved(self, date: str) -> bool:
@@ -14,7 +15,7 @@ class Database:
         return bool(found)
 
     def insert_if_not_present(self, data: ScrapedData) -> str:
-        is_already_saved = self.is_record_already_saved(data.date)
+        is_already_saved = self.is_record_already_saved(data.general_data.date)
 
         if not is_already_saved:
             dict_data = data.to_dict()
