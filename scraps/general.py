@@ -65,7 +65,7 @@ class GeneralScraper(BaseScraper):
 
     def set_date_of_scraping(self):
         current_date = datetime.today()
-        self.scraped_data.scraping_date = str(current_date)
+        self.scraped_data.scraping_date = current_date
 
     def wait_unitl_numbers_are_shown(self):
         self.wait_unitl_css_element_is_shown(self.green_heart_image_selector)

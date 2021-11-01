@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class GeneralData:
 
     """GeneralData represents general statistics about COVID."""
@@ -11,7 +14,7 @@ class GeneralData:
         daily_death: int = -1,
         daily_infected: int = -1,
         date: str = "01.01.1970 00:00",
-        scraping_date: str = "01.01.1970 00:00",
+        scraping_date: datetime = datetime.today(),
     ):
         self.total_recovered = total_recovered
         self.total_death = total_death
