@@ -17,9 +17,12 @@ def main():
             "Provide URL for connecting to MongoDB (via environment variable CONNECTION_URL)"
         )
 
+    database_name = os.environ.get("DB_NAME")
+    collection_name = os.environ.get("COL_NAME")
+
     data = start_scrapers()
 
-    db = Database(mongodb_url)
+    db = Database(mongodb_url, database_name, collection_name)
     result = db.insert_if_not_present(data)
 
     if result != "-1":
