@@ -9,13 +9,13 @@ class VoivodeshipScraper(BaseScraper):
     url = "https://wojewodztwa-rcb-gis.hub.arcgis.com/"
 
     daily_infected_chart_seletor = (
-        "//section[@id='ember59']//div[@class='amcharts-chart-div']"
+        "//section[@id='ember58']//div[@class='amcharts-chart-div']"
     )
     daily_infected_list_selector = (
         f"{daily_infected_chart_seletor}//*[contains(@aria-label, 'Liczba zakażeń')]"
     )
     daily_tested_chart_selector = (
-        "//section[@id='ember67']//div[@class='amcharts-chart-div']"
+        "//section[@id='ember66']//div[@class='amcharts-chart-div']"
     )
     daily_tested_list_selector = f"{daily_tested_chart_selector}//*[contains(@aria-label, 'Liczba wykonanych testów')]"
 
